@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		43212F63262A00A20008ACEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43212F62262A00A20008ACEA /* AppDelegate.swift */; };
+		43212F65262A00A20008ACEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43212F64262A00A20008ACEA /* SceneDelegate.swift */; };
+		43212F67262A00A20008ACEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43212F66262A00A20008ACEA /* ViewController.swift */; };
+		43212F6A262A00A20008ACEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43212F68262A00A20008ACEA /* Main.storyboard */; };
+		43212F6C262A00A30008ACEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43212F6B262A00A30008ACEA /* Assets.xcassets */; };
+		43212F6F262A00A30008ACEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43212F6D262A00A30008ACEA /* LaunchScreen.storyboard */; };
+		43212F7A262A00A30008ACEA /* cautious_barnacleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43212F79262A00A30008ACEA /* cautious_barnacleTests.swift */; };
+		43212F85262A00A30008ACEA /* cautious_barnacleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43212F84262A00A30008ACEA /* cautious_barnacleUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		43212F76262A00A30008ACEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43212F57262A00A20008ACEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43212F5E262A00A20008ACEA;
+			remoteInfo = "cautious-barnacle";
+		};
+		43212F81262A00A30008ACEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43212F57262A00A20008ACEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43212F5E262A00A20008ACEA;
+			remoteInfo = "cautious-barnacle";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		43212F5F262A00A20008ACEA /* cautious-barnacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cautious-barnacle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43212F62262A00A20008ACEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		43212F64262A00A20008ACEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		43212F66262A00A20008ACEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		43212F69262A00A20008ACEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		43212F6B262A00A30008ACEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		43212F6E262A00A30008ACEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		43212F70262A00A30008ACEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43212F75262A00A30008ACEA /* cautious-barnacleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cautious-barnacleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43212F79262A00A30008ACEA /* cautious_barnacleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cautious_barnacleTests.swift; sourceTree = "<group>"; };
+		43212F7B262A00A30008ACEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43212F80262A00A30008ACEA /* cautious-barnacleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cautious-barnacleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43212F84262A00A30008ACEA /* cautious_barnacleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cautious_barnacleUITests.swift; sourceTree = "<group>"; };
+		43212F86262A00A30008ACEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		43212F5C262A00A20008ACEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43212F72262A00A30008ACEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43212F7D262A00A30008ACEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		43212F56262A00A20008ACEA = {
+			isa = PBXGroup;
+			children = (
+				43212F61262A00A20008ACEA /* cautious-barnacle */,
+				43212F78262A00A30008ACEA /* cautious-barnacleTests */,
+				43212F83262A00A30008ACEA /* cautious-barnacleUITests */,
+				43212F60262A00A20008ACEA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		43212F60262A00A20008ACEA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				43212F5F262A00A20008ACEA /* cautious-barnacle.app */,
+				43212F75262A00A30008ACEA /* cautious-barnacleTests.xctest */,
+				43212F80262A00A30008ACEA /* cautious-barnacleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		43212F61262A00A20008ACEA /* cautious-barnacle */ = {
+			isa = PBXGroup;
+			children = (
+				43212F62262A00A20008ACEA /* AppDelegate.swift */,
+				43212F64262A00A20008ACEA /* SceneDelegate.swift */,
+				43212F66262A00A20008ACEA /* ViewController.swift */,
+				43212F68262A00A20008ACEA /* Main.storyboard */,
+				43212F6B262A00A30008ACEA /* Assets.xcassets */,
+				43212F6D262A00A30008ACEA /* LaunchScreen.storyboard */,
+				43212F70262A00A30008ACEA /* Info.plist */,
+			);
+			path = "cautious-barnacle";
+			sourceTree = "<group>";
+		};
+		43212F78262A00A30008ACEA /* cautious-barnacleTests */ = {
+			isa = PBXGroup;
+			children = (
+				43212F79262A00A30008ACEA /* cautious_barnacleTests.swift */,
+				43212F7B262A00A30008ACEA /* Info.plist */,
+			);
+			path = "cautious-barnacleTests";
+			sourceTree = "<group>";
+		};
+		43212F83262A00A30008ACEA /* cautious-barnacleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				43212F84262A00A30008ACEA /* cautious_barnacleUITests.swift */,
+				43212F86262A00A30008ACEA /* Info.plist */,
+			);
+			path = "cautious-barnacleUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		43212F5E262A00A20008ACEA /* cautious-barnacle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43212F89262A00A30008ACEA /* Build configuration list for PBXNativeTarget "cautious-barnacle" */;
+			buildPhases = (
+				43212F5B262A00A20008ACEA /* Sources */,
+				43212F5C262A00A20008ACEA /* Frameworks */,
+				43212F5D262A00A20008ACEA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "cautious-barnacle";
+			productName = "cautious-barnacle";
+			productReference = 43212F5F262A00A20008ACEA /* cautious-barnacle.app */;
+			productType = "com.apple.product-type.application";
+		};
+		43212F74262A00A30008ACEA /* cautious-barnacleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43212F8C262A00A30008ACEA /* Build configuration list for PBXNativeTarget "cautious-barnacleTests" */;
+			buildPhases = (
+				43212F71262A00A30008ACEA /* Sources */,
+				43212F72262A00A30008ACEA /* Frameworks */,
+				43212F73262A00A30008ACEA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				43212F77262A00A30008ACEA /* PBXTargetDependency */,
+			);
+			name = "cautious-barnacleTests";
+			productName = "cautious-barnacleTests";
+			productReference = 43212F75262A00A30008ACEA /* cautious-barnacleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		43212F7F262A00A30008ACEA /* cautious-barnacleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43212F8F262A00A30008ACEA /* Build configuration list for PBXNativeTarget "cautious-barnacleUITests" */;
+			buildPhases = (
+				43212F7C262A00A30008ACEA /* Sources */,
+				43212F7D262A00A30008ACEA /* Frameworks */,
+				43212F7E262A00A30008ACEA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				43212F82262A00A30008ACEA /* PBXTargetDependency */,
+			);
+			name = "cautious-barnacleUITests";
+			productName = "cautious-barnacleUITests";
+			productReference = 43212F80262A00A30008ACEA /* cautious-barnacleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		43212F57262A00A20008ACEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					43212F5E262A00A20008ACEA = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					43212F74262A00A30008ACEA = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 43212F5E262A00A20008ACEA;
+					};
+					43212F7F262A00A30008ACEA = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 43212F5E262A00A20008ACEA;
+					};
+				};
+			};
+			buildConfigurationList = 43212F5A262A00A20008ACEA /* Build configuration list for PBXProject "cautious-barnacle" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 43212F56262A00A20008ACEA;
+			productRefGroup = 43212F60262A00A20008ACEA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				43212F5E262A00A20008ACEA /* cautious-barnacle */,
+				43212F74262A00A30008ACEA /* cautious-barnacleTests */,
+				43212F7F262A00A30008ACEA /* cautious-barnacleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		43212F5D262A00A20008ACEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43212F6F262A00A30008ACEA /* LaunchScreen.storyboard in Resources */,
+				43212F6C262A00A30008ACEA /* Assets.xcassets in Resources */,
+				43212F6A262A00A20008ACEA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43212F73262A00A30008ACEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43212F7E262A00A30008ACEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		43212F5B262A00A20008ACEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43212F67262A00A20008ACEA /* ViewController.swift in Sources */,
+				43212F63262A00A20008ACEA /* AppDelegate.swift in Sources */,
+				43212F65262A00A20008ACEA /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43212F71262A00A30008ACEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43212F7A262A00A30008ACEA /* cautious_barnacleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43212F7C262A00A30008ACEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43212F85262A00A30008ACEA /* cautious_barnacleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		43212F77262A00A30008ACEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43212F5E262A00A20008ACEA /* cautious-barnacle */;
+			targetProxy = 43212F76262A00A30008ACEA /* PBXContainerItemProxy */;
+		};
+		43212F82262A00A30008ACEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43212F5E262A00A20008ACEA /* cautious-barnacle */;
+			targetProxy = 43212F81262A00A30008ACEA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		43212F68262A00A20008ACEA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43212F69262A00A20008ACEA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		43212F6D262A00A30008ACEA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43212F6E262A00A30008ACEA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		43212F87262A00A30008ACEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		43212F88262A00A30008ACEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		43212F8A262A00A30008ACEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 384ZNTC2D2;
+				INFOPLIST_FILE = "cautious-barnacle/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kosta.khet.cautious-barnacle";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		43212F8B262A00A30008ACEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 384ZNTC2D2;
+				INFOPLIST_FILE = "cautious-barnacle/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kosta.khet.cautious-barnacle";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		43212F8D262A00A30008ACEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 384ZNTC2D2;
+				INFOPLIST_FILE = "cautious-barnacleTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kosta.khet.cautious-barnacleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cautious-barnacle.app/cautious-barnacle";
+			};
+			name = Debug;
+		};
+		43212F8E262A00A30008ACEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 384ZNTC2D2;
+				INFOPLIST_FILE = "cautious-barnacleTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kosta.khet.cautious-barnacleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cautious-barnacle.app/cautious-barnacle";
+			};
+			name = Release;
+		};
+		43212F90262A00A30008ACEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 384ZNTC2D2;
+				INFOPLIST_FILE = "cautious-barnacleUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kosta.khet.cautious-barnacleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "cautious-barnacle";
+			};
+			name = Debug;
+		};
+		43212F91262A00A30008ACEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 384ZNTC2D2;
+				INFOPLIST_FILE = "cautious-barnacleUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kosta.khet.cautious-barnacleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "cautious-barnacle";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		43212F5A262A00A20008ACEA /* Build configuration list for PBXProject "cautious-barnacle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43212F87262A00A30008ACEA /* Debug */,
+				43212F88262A00A30008ACEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43212F89262A00A30008ACEA /* Build configuration list for PBXNativeTarget "cautious-barnacle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43212F8A262A00A30008ACEA /* Debug */,
+				43212F8B262A00A30008ACEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43212F8C262A00A30008ACEA /* Build configuration list for PBXNativeTarget "cautious-barnacleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43212F8D262A00A30008ACEA /* Debug */,
+				43212F8E262A00A30008ACEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43212F8F262A00A30008ACEA /* Build configuration list for PBXNativeTarget "cautious-barnacleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43212F90262A00A30008ACEA /* Debug */,
+				43212F91262A00A30008ACEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 43212F57262A00A20008ACEA /* Project object */;
+}
