@@ -20,7 +20,7 @@ class ScreenFactoryImp: ScreenFactory {
     
     func makeWordDetailScreen(of word: Word) -> WordDetailViewController<WordDetailViewImp> {
         let screen = WordDetailViewController<WordDetailViewImp>()
-        screen.navigationItem.title = word.name
+        screen.navigationItem.title = word.text
         return screen
     }
 

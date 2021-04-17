@@ -13,36 +13,30 @@ protocol WordsView: UIView {
 
 class WordsViewImp: UIView, WordsView {
     private var words: [WordCellInputData] = []
-    private var tableView: UITableView?
+    private let tableView: UITableView
     
     override init(frame: CGRect) {
+        
+        tableView = UITableView(frame: .zero, style: .plain)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(type: WordTableViewCell.self)
+        
         super.init(frame: frame)
         
-        setup()
+        backgroundColor = .systemBackground
+        tableView.delegate = self
+        tableView.dataSource = self
+        addSubview(tableView)
+        tableView.pinEdges(to: self)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup() {
-        backgroundColor = .systemBackground
-        
-        let tableView = UITableView(frame: .zero, style: .plain)
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(type: WordTableViewCell.self)
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        addSubview(tableView)
-        
-        tableView.pinEdges(to: self)
-    }
-    
     func update(with data: WordsViewInputData) {
-        words = data.wordCellInputData
-        tableView?.reloadData()
+        self.words = data.wordCellInputData
+        self.tableView.reloadData()
     }
 }
 
@@ -54,8 +48,10 @@ struct WordsViewInputData {
 
 extension WordsViewImp: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(words.count)
         return words.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WordTableViewCell.identifier, for: indexPath) as? WordTableViewCell else {

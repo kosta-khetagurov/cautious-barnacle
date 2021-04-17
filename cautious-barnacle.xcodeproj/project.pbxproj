@@ -29,6 +29,7 @@
 		43213002262AC4F90008ACEA /* WordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43213001262AC4F90008ACEA /* WordsView.swift */; };
 		4364206D262AD70A006D14AC /* WordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364206C262AD70A006D14AC /* WordDetailViewController.swift */; };
 		43642072262AD716006D14AC /* WordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43642071262AD716006D14AC /* WordDetailView.swift */; };
+		43642077262ADBED006D14AC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43642076262ADBED006D14AC /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		43213001262AC4F90008ACEA /* WordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsView.swift; sourceTree = "<group>"; };
 		4364206C262AD70A006D14AC /* WordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailViewController.swift; sourceTree = "<group>"; };
 		43642071262AD716006D14AC /* WordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailView.swift; sourceTree = "<group>"; };
+		43642076262ADBED006D14AC /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 				43212FF9262AC40A0008ACEA /* ViewFactory.swift */,
 				43212FEC262A09930008ACEA /* Word.swift */,
 				43212FF4262AC3BB0008ACEA /* WordTableViewCell.swift */,
+				43642076262ADBED006D14AC /* Networking.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43642077262ADBED006D14AC /* Networking.swift in Sources */,
 				43212FED262A09930008ACEA /* Word.swift in Sources */,
 				43212FE3262A08C20008ACEA /* AppCoordinator.swift in Sources */,
 				43212FC1262A07B90008ACEA /* loadFromNib.swift in Sources */,

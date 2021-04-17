@@ -13,10 +13,11 @@ class WordsViewController <View: WordsView>: BaseViewController<View> {
     var onSelectWord: ((Word)->())?
     
     init(wordsProvider: WordsProvider) {
-        
         self.wordsProvider = wordsProvider
         
         super.init(nibName: nil, bundle: nil)
+        
+        self.wordsProvider.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -27,9 +28,7 @@ class WordsViewController <View: WordsView>: BaseViewController<View> {
         super.loadView()
 
         configureSearchController()
-        
-        let inputData = makeTranslateViewInputData(from: WordsProvider.State(words: [Word(name: "hello")], nextPage: 1, isLoadProgress: false, error: nil))
-        rootView.update(with: inputData)
+        wordsProvider.searchForWords()
     }
     
     func configureSearchController() {
@@ -41,13 +40,30 @@ class WordsViewController <View: WordsView>: BaseViewController<View> {
     }
     
     private func makeTranslateViewInputData(from state: WordsProvider.State) -> WordsViewInputData {
-        return WordsViewInputData(wordCellInputData: [makeWordViewCellInputData(from: Word(name: "Hello!"))], error: nil, isLoading: false)
+        return WordsViewInputData(
+            wordCellInputData: state.words.map(makeWordViewCellInputData),
+            error: state.error,
+            isLoading: state.isLoadProgress)
     }
     
     private func makeWordViewCellInputData(from word: Word) -> WordCellInputData {
         return WordCellInputData(word: word, onSelect: { [weak self] in self?.onSelectWord!(word)})
     }
     
+}
+
+extension WordsViewController: WordsProviderDelegate {
+    func provide(words: [Word]) {
+        let inputData = makeTranslateViewInputData(
+            from: WordsProvider.State(
+                words: words,
+                nextPage: 1,
+                isLoadProgress: false,
+                error: nil))
+        DispatchQueue.main.async {
+            self.rootView.update(with: inputData)
+        }
+    }
 }
 
 class SearchUpdater: NSObject, UISearchResultsUpdating {
@@ -61,6 +77,10 @@ struct WordCellInputData {
     let onSelect: (()->())?
 }
 
+protocol WordsProviderDelegate: class {
+    func provide(words: [Word])
+}
+
 class WordsProvider {
     struct State {
         let words: [Word]
@@ -69,9 +89,19 @@ class WordsProvider {
         let error: Error?
     }
     
+    weak var delegate: WordsProviderDelegate?
+    
     init(service: WordService) {
         
     }
+    
+    func searchForWords(){
+        URLSession.shared.load(searchResource) { [weak self] (words) in
+            guard let words = words else {return}
+            self?.delegate?.provide(words: words)
+        }
+    }
+    
 }
 
 class WordService {

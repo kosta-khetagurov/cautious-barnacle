@@ -35,6 +35,6 @@ class WordTableViewCell: UITableViewCell, IdentifiableView {
     }
     
     func configure(with word: Word) {
-        nameLabel.text = word.name
+        nameLabel.text = word.text
     }
 }
