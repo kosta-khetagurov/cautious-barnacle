@@ -13,7 +13,7 @@ protocol ScreenFactory {
 
 class ScreenFactoryImp: ScreenFactory {
     func makeTraslateScreen() -> WordsViewController<WordsViewImp> {
-        let screen = WordsViewController<WordsViewImp>(wordsProvider: WordsProvider(service: WordService()))
+        let screen = WordsViewController<WordsViewImp>(wordsProvider: WordsProviderImp())
         screen.navigationItem.title = "Все слова"
         return screen
     }

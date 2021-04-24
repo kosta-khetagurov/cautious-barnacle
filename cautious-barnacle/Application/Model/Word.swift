@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Word: Decodable {
+struct Word: Hashable, Decodable {
     let id: Int
     let text: String
     let meanings: [Meaning]
 }
 
-struct Meaning: Decodable {
+struct Meaning: Hashable, Decodable {
     let id: Int
     let partOfSpeechCode: String
     let translation: Translation
@@ -23,7 +23,7 @@ struct Meaning: Decodable {
     let soundUrl: String
 }
 
-struct Translation: Decodable {
+struct Translation: Hashable, Decodable {
     let text: String
     let note: String?
 }

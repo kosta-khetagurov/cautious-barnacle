@@ -7,8 +7,23 @@
 
 import Foundation
 
+protocol Session {
+    func load<A>(_ resource: Resource<A>, completion: @escaping (A?) -> ())
+}
+
+struct Environment {
+    let session: Session
+    static var env = Environment()
+    init(session: Session = URLSession.shared) {
+        self.session = session
+    }
+}
+
+extension URLSession: Session {}
+
 extension URLSession {
     func load<A>(_ resource: Resource<A>, completion: @escaping (A?) -> ()) {
+        print(resource.urlRequest.url?.absoluteString)
         dataTask(with: resource.urlRequest) { (data, response, error) in
             if let error = error {
                 print(error)
@@ -43,24 +58,10 @@ extension Resource where A: Decodable {
 }
 
 let basicURL = URL(string: "https://dictionary.skyeng.ru/api/public/v1/")!
-let searchRequest = URLRequest(
-                        url: URL(
-                            string: "words/search",
-                            relativeTo: basicURL)!,
-                        cachePolicy: .reloadRevalidatingCacheData,
-                        timeoutInterval: 60
-                    )
 
-let meaningRequest = URLRequest(
-    url: URL(
-        string: "meanings",
-        relativeTo: basicURL)!,
-    cachePolicy: .reloadRevalidatingCacheData,
-    timeoutInterval: 60
-)
-
-let searchResource = Resource<[Word]>(get: URL(
-                                        string: "words/search",
-                                        relativeTo: basicURL)!, parameters: [URLQueryItem(name: "search", value: "hello"), URLQueryItem(name: "page", value: "1"), URLQueryItem(name: "pageSize", value: "2")])
-
-
+func makeSearchResource(for text: String, at page: Int, size perPage: Int = 20) -> Resource<[Word]> {
+    return Resource<[Word]>(get: URL(
+                                    string: "words/search",
+                                    relativeTo: basicURL)!,
+                            parameters: [URLQueryItem(name: "search", value: text), URLQueryItem(name: "page", value: "\(page)"), URLQueryItem(name: "pageSize", value: "\(perPage)")])
+}

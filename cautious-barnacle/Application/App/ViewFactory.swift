@@ -33,4 +33,14 @@ class ViewFactory {
         textView.translatesAutoresizingMaskIntoConstraints = !usesAutoLayout
         return textView
     }
+    
+    static func makeErrorView(with error: WordsError) -> UIView {
+        let view = ViewFactory.makeContainerView()
+        let label = ViewFactory.makeLabel(font: .preferredFont(forTextStyle:.body))
+        view.addSubview(label)
+    
+        label.text = error.errorDescription
+        label.pinEdges(to: view)
+        return view
+    }
 }

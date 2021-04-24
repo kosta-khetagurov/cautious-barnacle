@@ -8,6 +8,6 @@
 import UIKit
 
 class WordDetailViewController <View: WordDetailView>: BaseViewController<View> {
-
+    
 }
 
