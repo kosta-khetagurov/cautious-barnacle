@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WordTableViewCell: UITableViewCell, IdentifiableView {
+class WordTableViewCell: UITableViewCell {
     
     private lazy var nameLabel: UILabel = ViewFactory.makeLabel(font: .preferredFont(forTextStyle: .title3))
     
@@ -21,16 +21,12 @@ class WordTableViewCell: UITableViewCell, IdentifiableView {
         fatalError()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
     func setup() {
         contentView.addSubview(nameLabel)
         
         nameLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         nameLabel.pinEdges(to: contentView, withInset: 8)
-        
+
         accessoryType = .disclosureIndicator
     }
     

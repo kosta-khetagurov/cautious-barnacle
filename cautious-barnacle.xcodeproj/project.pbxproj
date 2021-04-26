@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,8 +28,10 @@
 		4364206D262AD70A006D14AC /* WordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364206C262AD70A006D14AC /* WordDetailViewController.swift */; };
 		43642072262AD716006D14AC /* WordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43642071262AD716006D14AC /* WordDetailView.swift */; };
 		43642077262ADBED006D14AC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43642076262ADBED006D14AC /* Networking.swift */; };
+		437D27DD26346614003AD2D3 /* Meaning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D27DC26346614003AD2D3 /* Meaning.swift */; };
 		437D4C9326340BA300189B1D /* WordsProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D4C9226340BA300189B1D /* WordsProviderTests.swift */; };
 		437D4CA126340D4500189B1D /* WordsServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D4CA026340D4500189B1D /* WordsServiceMock.swift */; };
+		43B9BB942635AABA001AA600 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 43B9BB932635AABA001AA600 /* Kingfisher */; };
 		43DF5F862631CEE4008985D2 /* WordsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DF5F852631CEE4008985D2 /* WordsTableView.swift */; };
 		43F8B815262C7FFD00F33BCE /* WordsProviderImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F8B814262C7FFD00F33BCE /* WordsProviderImp.swift */; };
 		43F8B81A262C802200F33BCE /* WordsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F8B819262C802200F33BCE /* WordsService.swift */; };
@@ -79,6 +81,7 @@
 		4364206C262AD70A006D14AC /* WordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailViewController.swift; sourceTree = "<group>"; };
 		43642071262AD716006D14AC /* WordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailView.swift; sourceTree = "<group>"; };
 		43642076262ADBED006D14AC /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		437D27DC26346614003AD2D3 /* Meaning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meaning.swift; sourceTree = "<group>"; };
 		437D4C9226340BA300189B1D /* WordsProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsProviderTests.swift; sourceTree = "<group>"; };
 		437D4CA026340D4500189B1D /* WordsServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsServiceMock.swift; sourceTree = "<group>"; };
 		43DF5F852631CEE4008985D2 /* WordsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsTableView.swift; sourceTree = "<group>"; };
@@ -91,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B9BB942635AABA001AA600 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				43212FEC262A09930008ACEA /* Word.swift */,
+				437D27DC26346614003AD2D3 /* Meaning.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,6 +305,9 @@
 			dependencies = (
 			);
 			name = "cautious-barnacle";
+			packageProductDependencies = (
+				43B9BB932635AABA001AA600 /* Kingfisher */,
+			);
 			productName = "cautious-barnacle";
 			productReference = 43212F5F262A00A20008ACEA /* cautious-barnacle.app */;
 			productType = "com.apple.product-type.application";
@@ -371,6 +379,9 @@
 				Base,
 			);
 			mainGroup = 43212F56262A00A20008ACEA;
+			packageReferences = (
+				43B9BB922635AABA001AA600 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 43212F60262A00A20008ACEA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -414,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43F8B81A262C802200F33BCE /* WordsService.swift in Sources */,
+				437D27DD26346614003AD2D3 /* Meaning.swift in Sources */,
 				43642077262ADBED006D14AC /* Networking.swift in Sources */,
 				43212FED262A09930008ACEA /* Word.swift in Sources */,
 				43212FE3262A08C20008ACEA /* AppCoordinator.swift in Sources */,
@@ -759,6 +771,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		43B9BB922635AABA001AA600 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		43B9BB932635AABA001AA600 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43B9BB922635AABA001AA600 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 43212F57262A00A20008ACEA /* Project object */;
 }

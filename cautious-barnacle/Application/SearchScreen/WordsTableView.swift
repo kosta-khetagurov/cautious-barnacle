@@ -32,9 +32,7 @@ class WordsTableView: UITableView {
         delegate = self
         register(type: WordTableViewCell.self)
         diffableDataSource = UITableViewDiffableDataSource<SectionIdentifier, ItemIdentifier>(tableView: self, cellProvider: { (tableView, indexPath, item) -> UITableViewCell? in
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: WordTableViewCell.identifier, for: indexPath) as? WordTableViewCell else {
-                fatalError("No such TableViewCell")
-            }
+            let cell = tableView.dequeueReusableCell(withType: WordTableViewCell.self, for: indexPath)
             cell.configure(with: item.word)
             return cell
         })

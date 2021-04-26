@@ -16,4 +16,13 @@ extension UIView {
             self.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: constant)
         ])
     }
+    
+    func pinEdgesConstraints(to view: UIView, withInset constant: CGFloat = 0) -> [NSLayoutConstraint] {
+        return [
+            self.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: constant),
+            self.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -constant),
+            self.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -constant),
+            self.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: constant)
+        ]
+    }
 }

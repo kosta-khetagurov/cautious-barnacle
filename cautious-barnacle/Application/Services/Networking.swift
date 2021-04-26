@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Session {
-    func load<A>(_ resource: Resource<A>, completion: @escaping (A?) -> ())
+    func load<A>(_ resource: Resource<A>, completion: @escaping (Result<A,Error>) -> ())
 }
 
 struct Environment {
@@ -22,13 +22,14 @@ struct Environment {
 extension URLSession: Session {}
 
 extension URLSession {
-    func load<A>(_ resource: Resource<A>, completion: @escaping (A?) -> ()) {
-        print(resource.urlRequest.url?.absoluteString)
+    func load<A>(_ resource: Resource<A>, completion: @escaping (Result<A,Error>) -> ()) {
         dataTask(with: resource.urlRequest) { (data, response, error) in
             if let error = error {
-                print(error)
+                completion(.failure(error))
             }
-            completion(data.flatMap(resource.parse))
+            if let data = data.flatMap(resource.parse) {
+                completion(.success(data))
+            }
         }.resume()
     }
 }
@@ -42,13 +43,11 @@ extension Resource where A: Decodable {
     init(get url: URL, parameters: [URLQueryItem]?) {
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)!
         urlComponents.queryItems = parameters
-
         self.urlRequest = URLRequest(url: urlComponents.url!)
         
         self.parse = { data in
             do {
                 return try JSONDecoder().decode(A.self, from: data)
-                
             } catch {
                 print(error)
             }
@@ -61,7 +60,14 @@ let basicURL = URL(string: "https://dictionary.skyeng.ru/api/public/v1/")!
 
 func makeSearchResource(for text: String, at page: Int, size perPage: Int = 20) -> Resource<[Word]> {
     return Resource<[Word]>(get: URL(
-                                    string: "words/search",
-                                    relativeTo: basicURL)!,
+                                string: "words/search",
+                                relativeTo: basicURL)!,
                             parameters: [URLQueryItem(name: "search", value: text), URLQueryItem(name: "page", value: "\(page)"), URLQueryItem(name: "pageSize", value: "\(perPage)")])
+}
+
+func makeMeaningResource(for ids: String, updateAt: String? = nil) -> Resource<[Meaning]> {
+    return Resource<[Meaning]>(get: URL(
+                                string: "meanings",
+                                relativeTo: basicURL)!,
+                            parameters: [URLQueryItem(name: "ids", value: ids)])
 }

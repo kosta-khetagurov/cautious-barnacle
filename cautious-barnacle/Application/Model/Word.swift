@@ -10,10 +10,10 @@ import Foundation
 struct Word: Hashable, Decodable {
     let id: Int
     let text: String
-    let meanings: [Meaning]
+    let meanings: [ShortMeaning]
 }
 
-struct Meaning: Hashable, Decodable {
+struct ShortMeaning: Hashable, Decodable {
     let id: Int
     let partOfSpeechCode: String
     let translation: Translation

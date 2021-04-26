@@ -45,13 +45,18 @@ class WordsProviderImp {
                 by: self.state.searchedText,
                 page: self.state.nextPage + 1,
                 perPage: self.perPage) {
-                [weak self] words, error in
+                [weak self] result in
                 guard let self = self else { return }
-                var newState = self.state.with(error).appendWords(words)
-                if !words.isEmpty && error == nil {
-                    newState = newState.incremetPage()
+                switch result {
+                case .success(let words):
+                    var newState = self.state.appendWords(words)
+                    if !words.isEmpty {
+                        newState = newState.incremetPage()
+                    }
+                    self.state = newState
+                case .failure(_):
+                    self.state = WordsProviderState.initial.with(WordsError(kind: .noResults))
                 }
-                self.state = newState
             }
         })
 
@@ -73,9 +78,14 @@ class WordsProviderImp {
                 by: text,
                 page: self.state.nextPage,
                 perPage: self.perPage) {
-                [weak self] words, error in
+                [weak self] result in
                 guard let self = self else { return }
-                self.state = WordsProviderState.initial.appendWords(words).with(error).set(text)
+                switch result {
+                case .success(let words):
+                    self.state = WordsProviderState.initial.appendWords(words).set(text)
+                case .failure(_):
+                    self.state = WordsProviderState.initial.with(WordsError(kind: .noResults))
+                }
             }
         })
         if let workItem = workItem {

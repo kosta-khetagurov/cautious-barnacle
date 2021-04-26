@@ -7,19 +7,21 @@
 import UIKit
 
 protocol ScreenFactory {
-    func makeTraslateScreen() -> WordsViewController<WordsViewImp>
-    func makeWordDetailScreen(of: Word) -> WordDetailViewController<WordDetailViewImp>
+    func makeTraslateScreen(wordsProvider: WordsProviderImp)-> WordsViewController<WordsViewImp>
+    func makeWordDetailScreen(of word: Word, wordsService: WordsServiceImp) -> WordDetailViewController<WordDetailViewImp>
 }
 
 class ScreenFactoryImp: ScreenFactory {
-    func makeTraslateScreen() -> WordsViewController<WordsViewImp> {
-        let screen = WordsViewController<WordsViewImp>(wordsProvider: WordsProviderImp())
+    func makeTraslateScreen(wordsProvider: WordsProviderImp)-> WordsViewController<WordsViewImp> {
+        let screen = WordsViewController<WordsViewImp>(wordsProvider: wordsProvider)
         screen.navigationItem.title = "Все слова"
         return screen
     }
     
-    func makeWordDetailScreen(of word: Word) -> WordDetailViewController<WordDetailViewImp> {
-        let screen = WordDetailViewController<WordDetailViewImp>()
+    func makeWordDetailScreen(of word: Word, wordsService: WordsServiceImp) -> WordDetailViewController<WordDetailViewImp> {
+        let meaningsIds = word.meanings.compactMap({String($0.id)}).joined(separator: ",")
+        let meaningProvider = MeaningProviderImp(wordsService: wordsService, meaningsIds: meaningsIds)
+        let screen = WordDetailViewController<WordDetailViewImp>(meaningProvider: meaningProvider)
         screen.navigationItem.title = word.text
         return screen
     }

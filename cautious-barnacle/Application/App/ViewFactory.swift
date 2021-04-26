@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewFactory {
-    static func makeContainerView(usesAutoLayout: Bool = true, backgroundColor: UIColor = .systemBackground, cornerRadius: CGFloat = 10) -> UIView {
+    static func makeContainerView(usesAutoLayout: Bool = true, backgroundColor: UIColor = .systemBackground, cornerRadius: CGFloat = 0) -> UIView {
         let view = UIView()
         view.layer.cornerRadius = cornerRadius
         view.translatesAutoresizingMaskIntoConstraints = !usesAutoLayout
