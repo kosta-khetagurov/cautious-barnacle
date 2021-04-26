@@ -34,7 +34,7 @@ class WordsProviderImp {
     
     func nextPage() {
         workItem?.cancel()
-        workItem = DispatchWorkItem(qos: .userInitiated, flags: [], block: {
+        workItem = DispatchWorkItem(qos: .userInitiated, block: {
             [weak self] in
             guard let self = self else { return }
             if self.state.searchedText.isEmpty {
@@ -67,7 +67,7 @@ class WordsProviderImp {
     
     func loadWords(matching text: String = "") {
         workItem?.cancel()
-        workItem = DispatchWorkItem(qos: .userInitiated, flags: [], block: {
+        workItem = DispatchWorkItem(qos: .userInitiated, block: {
             [weak self] in
             guard let self = self else { return }
             if text.isEmpty {
