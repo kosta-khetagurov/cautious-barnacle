@@ -25,6 +25,7 @@
 		43212FF5262AC3BB0008ACEA /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43212FF4262AC3BB0008ACEA /* WordTableViewCell.swift */; };
 		43212FFA262AC40A0008ACEA /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43212FF9262AC40A0008ACEA /* ViewFactory.swift */; };
 		43213002262AC4F90008ACEA /* WordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43213001262AC4F90008ACEA /* WordsView.swift */; };
+		434E7B7E26371855008F36C1 /* WordsMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434E7B7D26371855008F36C1 /* WordsMockData.swift */; };
 		435E35F12636F3270027FAF7 /* MeaningProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E35F02636F3270027FAF7 /* MeaningProvider.swift */; };
 		435E35F62636F3630027FAF7 /* MeaningTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E35F52636F3630027FAF7 /* MeaningTableView.swift */; };
 		435E35FB2636F3930027FAF7 /* MeaningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E35FA2636F3930027FAF7 /* MeaningTableViewCell.swift */; };
@@ -33,8 +34,7 @@
 		43642072262AD716006D14AC /* WordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43642071262AD716006D14AC /* WordDetailView.swift */; };
 		43642077262ADBED006D14AC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43642076262ADBED006D14AC /* Networking.swift */; };
 		437D27DD26346614003AD2D3 /* Meaning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D27DC26346614003AD2D3 /* Meaning.swift */; };
-		437D4C9326340BA300189B1D /* WordsProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D4C9226340BA300189B1D /* WordsProviderTests.swift */; };
-		437D4CA126340D4500189B1D /* WordsServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D4CA026340D4500189B1D /* WordsServiceMock.swift */; };
+		437D4C9326340BA300189B1D /* WordsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D4C9226340BA300189B1D /* WordsServiceTests.swift */; };
 		43B9BB942635AABA001AA600 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 43B9BB932635AABA001AA600 /* Kingfisher */; };
 		43DF5F862631CEE4008985D2 /* WordsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DF5F852631CEE4008985D2 /* WordsTableView.swift */; };
 		43F8B815262C7FFD00F33BCE /* WordsProviderImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F8B814262C7FFD00F33BCE /* WordsProviderImp.swift */; };
@@ -82,6 +82,7 @@
 		43212FF4262AC3BB0008ACEA /* WordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
 		43212FF9262AC40A0008ACEA /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		43213001262AC4F90008ACEA /* WordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsView.swift; sourceTree = "<group>"; };
+		434E7B7D26371855008F36C1 /* WordsMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsMockData.swift; sourceTree = "<group>"; };
 		435E35F02636F3270027FAF7 /* MeaningProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningProvider.swift; sourceTree = "<group>"; };
 		435E35F52636F3630027FAF7 /* MeaningTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningTableView.swift; sourceTree = "<group>"; };
 		435E35FA2636F3930027FAF7 /* MeaningTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningTableViewCell.swift; sourceTree = "<group>"; };
@@ -90,8 +91,7 @@
 		43642071262AD716006D14AC /* WordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailView.swift; sourceTree = "<group>"; };
 		43642076262ADBED006D14AC /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		437D27DC26346614003AD2D3 /* Meaning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meaning.swift; sourceTree = "<group>"; };
-		437D4C9226340BA300189B1D /* WordsProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsProviderTests.swift; sourceTree = "<group>"; };
-		437D4CA026340D4500189B1D /* WordsServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsServiceMock.swift; sourceTree = "<group>"; };
+		437D4C9226340BA300189B1D /* WordsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsServiceTests.swift; sourceTree = "<group>"; };
 		43B9BB9826369790001AA600 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		43DF5F852631CEE4008985D2 /* WordsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsTableView.swift; sourceTree = "<group>"; };
 		43F8B814262C7FFD00F33BCE /* WordsProviderImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsProviderImp.swift; sourceTree = "<group>"; };
@@ -159,8 +159,8 @@
 		43212F78262A00A30008ACEA /* cautious-barnacleTests */ = {
 			isa = PBXGroup;
 			children = (
-				437D4C9226340BA300189B1D /* WordsProviderTests.swift */,
-				437D4CA026340D4500189B1D /* WordsServiceMock.swift */,
+				437D4C9226340BA300189B1D /* WordsServiceTests.swift */,
+				434E7B7D26371855008F36C1 /* WordsMockData.swift */,
 				43212F7B262A00A30008ACEA /* Info.plist */,
 			);
 			path = "cautious-barnacleTests";
@@ -496,8 +496,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				437D4C9326340BA300189B1D /* WordsProviderTests.swift in Sources */,
-				437D4CA126340D4500189B1D /* WordsServiceMock.swift in Sources */,
+				437D4C9326340BA300189B1D /* WordsServiceTests.swift in Sources */,
+				434E7B7E26371855008F36C1 /* WordsMockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

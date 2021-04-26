@@ -34,7 +34,7 @@ extension URLSession {
     }
 }
 
-struct Resource<A> where A:Decodable {
+struct Resource<A> {
     var urlRequest: URLRequest
     let parse: (Data) -> A?
 }
@@ -53,6 +53,42 @@ extension Resource where A: Decodable {
             }
             return nil
         }
+    }
+}
+
+extension Resource {
+    func map<B>(_ transform: @escaping (A) -> B) -> Resource<B> {
+        return Resource<B>(urlRequest: urlRequest) { self.parse($0).map(transform) }
+    }
+}
+
+struct ResourceAndResponse {
+    let resource: Resource<Any>
+    let response: Any?
+    
+    init<A>(resource: Resource<A>, response: A?) {
+        self.resource = resource.map { $0 }
+        self.response = response.map { $0 }
+    }
+}
+
+class TestSession: Session {
+    var responses: [ResourceAndResponse]
+    
+    init(responses: [ResourceAndResponse]) {
+        self.responses = responses
+    }
+    
+    func load<A>(_ resource: Resource<A>, completion: @escaping (Result<A, Error>) -> ()) {
+        guard let idx = responses.firstIndex(where: { $0.resource.urlRequest == resource.urlRequest }), let response = responses[idx].response as? A else {
+            fatalError("No such resource: \(resource.urlRequest.url?.absoluteString)")
+        }
+        responses.remove(at: idx)
+        completion(.success(response))
+    }
+    
+    func verify() -> Bool {
+        return responses.isEmpty
     }
 }
 

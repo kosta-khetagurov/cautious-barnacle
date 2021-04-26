@@ -8,21 +8,28 @@
 import Foundation
 
 protocol WordsService {
+    var environment: Environment { get }
     func loadWords(by text: String, page: Int, perPage: Int, completion: @escaping (Result<[Word], Error>)->())
     func loadMeanings(ids: String, completion: @escaping (Result<[Meaning], Error>)->())
 }
 
 class WordsServiceImp: WordsService {
+    let environment: Environment
+    
+    init(environment: Environment = Environment()) {
+        self.environment = environment
+    }
+    
     func loadWords(by text: String, page: Int, perPage: Int, completion: @escaping (Result<[Word], Error>)->()) {
         let resource = makeSearchResource(for: text, at: page, size: perPage)
-        Environment.env.session.load(resource) { (result) in
+        environment.session.load(resource) { (result) in
             completion(result)
         }
     }
     
     func loadMeanings(ids: String, completion: @escaping (Result<[Meaning], Error>)->()) {
         let resource = makeMeaningResource(for: ids)
-        Environment.env.session.load(resource) { (meanings) in
+        environment.session.load(resource) { (meanings) in
             completion(meanings)
         }
     }
