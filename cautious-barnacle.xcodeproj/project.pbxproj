@@ -241,11 +241,19 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		435E36042636F6810027FAF7 /* UI */ = {
+		434E7B732636F855008F36C1 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				437D4C9A26340C2D00189B1D /* WordDetailScreen */,
 				43ED3FEE2632FA2D002D2BA5 /* SearchScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		435E36042636F6810027FAF7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				434E7B732636F855008F36C1 /* Screens */,
 				435E36052636F68B0027FAF7 /* Common */,
 			);
 			path = UI;
