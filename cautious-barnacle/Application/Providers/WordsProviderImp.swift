@@ -94,23 +94,6 @@ class WordsProviderImp {
     }
 }
 
-class WordsError: Error, LocalizedError {
-    enum ErrorKind {
-        case noResults
-    }
-    var kind: ErrorKind
-    
-    init(kind: ErrorKind) {
-        self.kind = kind
-    }
-    var errorDescription: String? {
-        switch self.kind {
-        case .noResults:
-            return "No Results"
-        }
-    }
-}
-
 struct WordsProviderState {
     let searchedText: String
     let words: [Word]

@@ -29,6 +29,7 @@ class MeaningTableView: UITableView {
     private func setup() {
         delegate = self
         separatorStyle = .none
+        allowsSelection = false
         
         register(type: MeaningTableViewCell.self)
         diffableDataSource = UITableViewDiffableDataSource<SectionIdentifier, ItemIdentifier>(tableView: self, cellProvider: { (tableView, indexPath, item) -> UITableViewCell? in

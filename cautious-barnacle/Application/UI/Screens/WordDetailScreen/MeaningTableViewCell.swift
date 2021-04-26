@@ -9,15 +9,13 @@ import UIKit
 import Kingfisher
 
 class MeaningTableViewCell: UITableViewCell {
-    var picture = UIImageView()
+    private var picture = UIImageView()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
         setup()
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {}
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
