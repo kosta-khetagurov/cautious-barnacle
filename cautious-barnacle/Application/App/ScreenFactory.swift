@@ -14,7 +14,7 @@ protocol ScreenFactory {
 class ScreenFactoryImp: ScreenFactory {
     func makeTraslateScreen(wordsProvider: WordsProviderImp)-> WordsViewController<WordsViewImp> {
         let screen = WordsViewController<WordsViewImp>(wordsProvider: wordsProvider)
-        screen.navigationItem.title = "Все слова"
+        screen.navigationItem.title = "Words"
         return screen
     }
     

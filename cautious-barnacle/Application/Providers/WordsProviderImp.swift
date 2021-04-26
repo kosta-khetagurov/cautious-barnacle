@@ -54,8 +54,8 @@ class WordsProviderImp {
                         newState = newState.incremetPage()
                     }
                     self.state = newState
-                case .failure(_):
-                    self.state = WordsProviderState.initial.with(WordsError(kind: .noResults))
+                case .failure(let error):
+                    self.state = WordsProviderState.initial.with(error)
                 }
             }
         })
@@ -83,8 +83,8 @@ class WordsProviderImp {
                 switch result {
                 case .success(let words):
                     self.state = WordsProviderState.initial.appendWords(words).set(text)
-                case .failure(_):
-                    self.state = WordsProviderState.initial.with(WordsError(kind: .noResults))
+                case .failure(let error):
+                    self.state = WordsProviderState.initial.with(error)
                 }
             }
         })
@@ -115,7 +115,7 @@ struct WordsProviderState {
     let searchedText: String
     let words: [Word]
     let nextPage: Int
-    let error: WordsError?
+    let error: Error?
     
     static let initial = WordsProviderState(
         searchedText: "",
@@ -142,7 +142,7 @@ struct WordsProviderState {
         )
     }
     
-    func with(_ error: WordsError?) -> Self {
+    func with(_ error: Error?) -> Self {
         return WordsProviderState(
             searchedText: searchedText,
             words: words,

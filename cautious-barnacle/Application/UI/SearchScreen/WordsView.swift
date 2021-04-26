@@ -32,7 +32,7 @@ class WordsViewImp: UIView, WordsView {
         setup()
     }
     
-    func setup() {
+    private func setup() {
         tableView.onDragToBottom = onDragToBottom
         backgroundColor = .systemBackground
         addSubview(stackView)
@@ -61,31 +61,5 @@ class WordsViewImp: UIView, WordsView {
 
 struct WordsViewInputData {
     let wordCellInputData: [WordCellInputData]
-    let error: WordsError?
+    let error: Error?
 }
-
-class ErrorView: UIView {
-    
-    private var label: UILabel!
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
-    }
-    
-    func setup() {
-        label = ViewFactory.makeLabel(font: .preferredFont(forTextStyle: .body))
-        addSubview(label)
-        label.pinEdges(to: self)
-    }
-    
-    func update(with text: String) {
-        label.text = text
-    }
-}
-
