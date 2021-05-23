@@ -13,59 +13,69 @@ protocol WordsProviderDelegate: class {
 }
 
 class WordsProviderImp {
-     
+
     private var wordsService: WordsService
     
-    private(set) var state = WordsProviderState.initial {
+    private(set) var state: WordsProviderState {
         didSet {
             delegate?.provide(state: state)
         }
     }
     
     private let queue = DispatchQueue(label: "com.cautios-barnacle.safe")
+    private let semaphore = DispatchSemaphore(value: 1)
     private var workItem: DispatchWorkItem?
-    private let perPage = 20
+    
+    private static let perPage = 5
+    private static let firstPage = 1
     
     weak var delegate: WordsProviderDelegate?
     
-    init(wordsService: WordsService = WordsServiceImp()) {
+    init(wordsService: WordsService = WordsServiceImp(),
+         state: WordsProviderState = WordsProviderState.initial) {
         self.wordsService = wordsService
+        self.state = state
     }
-    
+
     func nextPage() {
-        workItem?.cancel()
         workItem = DispatchWorkItem(qos: .userInitiated, block: {
             [weak self] in
-            guard let self = self else { return }
-            if self.state.searchedText.isEmpty {
+            guard let self = self,
+                  !self.state.allWordsLoaded else { return }
+            self.semaphore.wait()
+            if self.state.searchedText.isEmpty  {
                 self.state = .initial
                 return
             }
             self.wordsService.loadWords(
                 by: self.state.searchedText,
                 page: self.state.nextPage + 1,
-                perPage: self.perPage) {
+                perPage: WordsProviderImp.perPage) {
                 [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let words):
-                    var newState = self.state.appendWords(words)
-                    if !words.isEmpty {
-                        newState = newState.incremetPage()
-                    }
-                    self.state = newState
+                    self.state = self.state
+                        .appendWords(words)
+                        .incremetPage()
+                        .allWordsLoaded(words.isEmpty)
                 case .failure(let error):
-                    self.state = WordsProviderState.initial.with(error)
+                    self.state = WordsProviderState
+                        .initial
+                        .with(error)
                 }
+                self.semaphore.signal()
             }
         })
-
         if let workItem = workItem {
-            queue.asyncAfter(deadline: .now() + .milliseconds(250), execute: workItem)
+            queue.async(execute: workItem)
         }
     }
     
-    func loadWords(matching text: String = "") {
+    func tryLoadWords(matching text: String = "") {
+        if state.searchedText == text {
+            return
+        }
         workItem?.cancel()
         workItem = DispatchWorkItem(qos: .userInitiated, block: {
             [weak self] in
@@ -76,22 +86,25 @@ class WordsProviderImp {
             }
             self.wordsService.loadWords(
                 by: text,
-                page: self.state.nextPage,
-                perPage: self.perPage) {
+                page: WordsProviderImp.firstPage,
+                perPage: WordsProviderImp.perPage) {
                 [weak self] result in
                 guard let self = self else { return }
+                self.semaphore.wait()
                 switch result {
                 case .success(let words):
                     self.state = WordsProviderState.initial.appendWords(words).set(text)
                 case .failure(let error):
                     self.state = WordsProviderState.initial.with(error)
                 }
+                self.semaphore.signal()
             }
         })
         if let workItem = workItem {
             queue.asyncAfter(deadline: .now() + .milliseconds(250), execute: workItem)
         }
     }
+    
 }
 
 struct WordsProviderState {
@@ -99,12 +112,14 @@ struct WordsProviderState {
     let words: [Word]
     let nextPage: Int
     let error: Error?
+    let allWordsLoaded: Bool
     
     static let initial = WordsProviderState(
         searchedText: "",
         words: [],
         nextPage: 1,
-        error: nil
+        error: nil,
+        allWordsLoaded: false
     )
     
     func appendWords(_ newWords: [Word]) -> Self {
@@ -112,7 +127,8 @@ struct WordsProviderState {
             searchedText: searchedText,
             words: words + newWords,
             nextPage: nextPage,
-            error: error
+            error: error,
+            allWordsLoaded: allWordsLoaded
         )
     }
     
@@ -121,7 +137,8 @@ struct WordsProviderState {
             searchedText: searchedText,
             words: words,
             nextPage: nextPage + 1,
-            error: error
+            error: error,
+            allWordsLoaded: allWordsLoaded
         )
     }
     
@@ -130,15 +147,28 @@ struct WordsProviderState {
             searchedText: searchedText,
             words: words,
             nextPage: nextPage,
-            error: error
+            error: error,
+            allWordsLoaded: allWordsLoaded
         )
     }
+    
     func set(_ searchedText: String) -> Self {
         return WordsProviderState(
             searchedText: searchedText,
             words: words,
             nextPage: nextPage,
-            error: error
+            error: error,
+            allWordsLoaded: allWordsLoaded
+        )
+    }
+    
+    func allWordsLoaded(_ allWordsLoaded: Bool) -> Self {
+        return WordsProviderState(
+            searchedText: searchedText,
+            words: words,
+            nextPage: nextPage,
+            error: error,
+            allWordsLoaded: allWordsLoaded
         )
     }
 }

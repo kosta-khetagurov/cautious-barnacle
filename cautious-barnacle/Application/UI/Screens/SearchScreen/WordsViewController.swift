@@ -53,14 +53,14 @@ class WordsViewController <View: WordsView>: BaseViewController<View>, UISearchR
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else {
-            wordsProvider.loadWords()
             return
         }
-        wordsProvider.loadWords(matching: text)
+        wordsProvider.tryLoadWords(matching: text)
     }
 }
 
 extension WordsViewController: WordsProviderDelegate {
+    
     func provide(state: WordsProviderState) {
         let inputData = makeWordsViewInputData(from: state)
         
