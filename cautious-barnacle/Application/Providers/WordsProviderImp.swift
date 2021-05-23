@@ -26,7 +26,7 @@ class WordsProviderImp {
     private let queue = DispatchQueue(label: "com.cautios-barnacle.safe")
     private var workItem: DispatchWorkItem?
     
-    private static let perPage = 20
+    private static let perPage = 5
     private static let firstPage = 1
     
     weak var delegate: WordsProviderDelegate?
@@ -38,11 +38,11 @@ class WordsProviderImp {
     }
 
     func nextPage() {
-        if isLoading {
+        if state.isLoading {
             return
         }
         
-        isLoading = true
+        self.state = state.loading(true)
         
         workItem = DispatchWorkItem(qos: .userInitiated, block: {
             [weak self] in
@@ -64,12 +64,12 @@ class WordsProviderImp {
                         .appendWords(words)
                         .incremetPage()
                         .allWordsLoaded(words.isEmpty)
+                        .loading(false)
                 case .failure(let error):
                     self.state = WordsProviderState
                         .initial
                         .with(error)
                 }
-                self.isLoading = false
             }
         })
         if let workItem = workItem {
@@ -78,11 +78,11 @@ class WordsProviderImp {
     }
     
     func tryLoadWords(matching text: String = "") {
-        if state.searchedText == text, isLoading {
+        if state.searchedText == text, state.isLoading {
             return
         }
         workItem?.cancel()
-        isLoading = true
+        self.state = state.loading(true)
         workItem = DispatchWorkItem(qos: .userInitiated, block: {
             [weak self] in
             guard let self = self else { return }
@@ -98,11 +98,16 @@ class WordsProviderImp {
                 guard let self = self else { return }
                 switch result {
                 case .success(let words):
-                    self.state = WordsProviderState.initial.appendWords(words).set(text)
+                    self.state = WordsProviderState
+                        .initial
+                        .appendWords(words)
+                        .set(text)
+                        .loading(false)
                 case .failure(let error):
-                    self.state = WordsProviderState.initial.with(error)
+                    self.state = WordsProviderState
+                        .initial
+                        .with(error)
                 }
-                self.isLoading = false
             }
         })
         if let workItem = workItem {
@@ -118,13 +123,15 @@ struct WordsProviderState {
     let nextPage: Int
     let error: Error?
     let allWordsLoaded: Bool
+    let isLoading: Bool
     
     static let initial = WordsProviderState(
         searchedText: "",
         words: [],
         nextPage: 1,
         error: nil,
-        allWordsLoaded: false
+        allWordsLoaded: false,
+        isLoading: false
     )
     
     func appendWords(_ newWords: [Word]) -> Self {
@@ -133,7 +140,8 @@ struct WordsProviderState {
             words: words + newWords,
             nextPage: nextPage,
             error: error,
-            allWordsLoaded: allWordsLoaded
+            allWordsLoaded: allWordsLoaded,
+            isLoading: isLoading
         )
     }
     
@@ -143,7 +151,8 @@ struct WordsProviderState {
             words: words,
             nextPage: nextPage + 1,
             error: error,
-            allWordsLoaded: allWordsLoaded
+            allWordsLoaded: allWordsLoaded,
+            isLoading: isLoading
         )
     }
     
@@ -153,7 +162,8 @@ struct WordsProviderState {
             words: words,
             nextPage: nextPage,
             error: error,
-            allWordsLoaded: allWordsLoaded
+            allWordsLoaded: allWordsLoaded,
+            isLoading: isLoading
         )
     }
     
@@ -163,7 +173,8 @@ struct WordsProviderState {
             words: words,
             nextPage: nextPage,
             error: error,
-            allWordsLoaded: allWordsLoaded
+            allWordsLoaded: allWordsLoaded,
+            isLoading: isLoading
         )
     }
     
@@ -173,7 +184,19 @@ struct WordsProviderState {
             words: words,
             nextPage: nextPage,
             error: error,
-            allWordsLoaded: allWordsLoaded
+            allWordsLoaded: allWordsLoaded,
+            isLoading: isLoading
+        )
+    }
+    
+    func loading(_ isLoading: Bool) -> Self {
+        return WordsProviderState(
+            searchedText: searchedText,
+            words: words,
+            nextPage: nextPage,
+            error: error,
+            allWordsLoaded: allWordsLoaded,
+            isLoading: isLoading
         )
     }
 }
