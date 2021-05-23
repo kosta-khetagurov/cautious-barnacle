@@ -22,11 +22,11 @@ class WordsProviderImp {
         }
     }
     
+    private var isLoading: Bool = false
     private let queue = DispatchQueue(label: "com.cautios-barnacle.safe")
-    private let semaphore = DispatchSemaphore(value: 1)
     private var workItem: DispatchWorkItem?
     
-    private static let perPage = 5
+    private static let perPage = 20
     private static let firstPage = 1
     
     weak var delegate: WordsProviderDelegate?
@@ -38,11 +38,16 @@ class WordsProviderImp {
     }
 
     func nextPage() {
+        if isLoading {
+            return
+        }
+        
+        isLoading = true
+        
         workItem = DispatchWorkItem(qos: .userInitiated, block: {
             [weak self] in
             guard let self = self,
                   !self.state.allWordsLoaded else { return }
-            self.semaphore.wait()
             if self.state.searchedText.isEmpty  {
                 self.state = .initial
                 return
@@ -64,7 +69,7 @@ class WordsProviderImp {
                         .initial
                         .with(error)
                 }
-                self.semaphore.signal()
+                self.isLoading = false
             }
         })
         if let workItem = workItem {
@@ -73,10 +78,11 @@ class WordsProviderImp {
     }
     
     func tryLoadWords(matching text: String = "") {
-        if state.searchedText == text {
+        if state.searchedText == text, isLoading {
             return
         }
         workItem?.cancel()
+        isLoading = true
         workItem = DispatchWorkItem(qos: .userInitiated, block: {
             [weak self] in
             guard let self = self else { return }
@@ -90,14 +96,13 @@ class WordsProviderImp {
                 perPage: WordsProviderImp.perPage) {
                 [weak self] result in
                 guard let self = self else { return }
-                self.semaphore.wait()
                 switch result {
                 case .success(let words):
                     self.state = WordsProviderState.initial.appendWords(words).set(text)
                 case .failure(let error):
                     self.state = WordsProviderState.initial.with(error)
                 }
-                self.semaphore.signal()
+                self.isLoading = false
             }
         })
         if let workItem = workItem {
