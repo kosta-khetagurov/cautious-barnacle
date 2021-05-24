@@ -26,7 +26,7 @@ class WordsProviderImp {
     private let queue = DispatchQueue(label: "com.cautios-barnacle.safe")
     private var workItem: DispatchWorkItem?
     
-    private static let perPage = 5
+    private static let perPage = 20
     private static let firstPage = 1
     
     weak var delegate: WordsProviderDelegate?
@@ -38,16 +38,14 @@ class WordsProviderImp {
     }
 
     func nextPage() {
-        if state.isLoading {
-            return
-        }
-        
-        self.state = state.loading(true)
-        
+
         workItem = DispatchWorkItem(qos: .userInitiated, block: {
             [weak self] in
             guard let self = self,
-                  !self.state.allWordsLoaded else { return }
+                  !self.state.allWordsLoaded, !self.state.isLoading else { return }
+            
+            self.state = self.state.loading(true)
+            
             if self.state.searchedText.isEmpty  {
                 self.state = .initial
                 return

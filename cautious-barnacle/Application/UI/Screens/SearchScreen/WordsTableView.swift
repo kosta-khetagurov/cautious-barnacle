@@ -26,12 +26,14 @@ class WordsTableView: UITableView {
         setup()
     }
     
+    
     private func setup() {
         configureSubscriptions()
         
         delegate = self
         register(type: WordTableViewCell.self)
         diffableDataSource = UITableViewDiffableDataSource<SectionIdentifier, ItemIdentifier>(tableView: self, cellProvider: { (tableView, indexPath, item) -> UITableViewCell? in
+            
             let cell = tableView.dequeueReusableCell(withType: WordTableViewCell.self, for: indexPath)
             cell.configure(with: item.word)
             return cell
@@ -45,6 +47,7 @@ class WordsTableView: UITableView {
         snapshot.appendItems(cells, toSection: 1)
         diffableDataSource?.apply(snapshot, animatingDifferences: false)
     }
+
     
     private func configureSubscriptions() {
         

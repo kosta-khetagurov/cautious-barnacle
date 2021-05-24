@@ -44,6 +44,7 @@ class WordsViewController <View: WordsView>: BaseViewController<View>, UISearchR
     private func makeWordsViewInputData(from state: WordsProviderState) -> WordsViewInputData {
         return WordsViewInputData(
             wordCellInputData: state.words.map(makeWordViewCellInputData),
+            isLoading: state.isLoading,
             error: state.error)
     }
     
@@ -73,7 +74,7 @@ extension WordsViewController: WordsProviderDelegate {
 struct WordCellInputData: Hashable {
     let word: Word
     let onSelect: (()->())?
-
+  
     func hash(into hasher: inout Hasher) {
         hasher.combine(word.id)
     }
